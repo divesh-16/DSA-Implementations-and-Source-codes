@@ -23,8 +23,6 @@ public class App {
 			System.out.println(stk.pop());
 		}
 		
-		System.out.println(stk.size());
-		
 	}
 
 }

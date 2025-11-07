@@ -1,0 +1,17 @@
+package com.tca;
+
+import com.tca.util.StaticStack;
+
+public class App {
+
+	public static void main(String[] args) 
+	{
+		StaticStack stk = new StaticStack(-3);
+		
+		stk.push(11);
+		stk.push(22);
+		
+
+	}
+
+}

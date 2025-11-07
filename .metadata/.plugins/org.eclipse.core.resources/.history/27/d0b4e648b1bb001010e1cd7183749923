@@ -14,17 +14,9 @@ public class App {
 		stk.push(44);
 		stk.push(55);
 		
-		System.out.println(stk.size());
-		
 		System.out.println(stk);
 		
-		while(!stk.isEmpty())
-		{
-			System.out.println(stk.pop());
-		}
-		
-		System.out.println(stk.size());
-		
+
 	}
 
 }

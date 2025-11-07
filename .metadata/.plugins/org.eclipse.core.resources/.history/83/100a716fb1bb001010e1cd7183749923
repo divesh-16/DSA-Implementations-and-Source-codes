@@ -18,13 +18,6 @@ public class App {
 		
 		System.out.println(stk);
 		
-		while(!stk.isEmpty())
-		{
-			System.out.println(stk.pop());
-		}
-		
-		System.out.println(stk.size());
-		
 	}
 
 }
