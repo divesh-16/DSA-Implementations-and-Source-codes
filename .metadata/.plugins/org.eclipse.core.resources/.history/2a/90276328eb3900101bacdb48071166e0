@@ -1,0 +1,13 @@
+package com.tca;
+
+public class Demo {
+
+	public static void main(String[] args) 
+	{
+		String s = "42";
+		
+		int ch = (int)s.charAt(0);
+		System.out.println(ch);
+	}
+
+}

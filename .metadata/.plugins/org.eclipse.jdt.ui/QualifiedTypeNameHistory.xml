@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="java.lang.Integer"/>
+    <fullyQualifiedTypeName name="com.tca.util.SinglyLinkedList"/>
+    <fullyQualifiedTypeName name="com.tca.bst.TreeNode"/>
+    <fullyQualifiedTypeName name="com.tca.bst.BST"/>
+    <fullyQualifiedTypeName name="java.lang.ArrayStoreException"/>
+    <fullyQualifiedTypeName name="java.util.Arrays"/>
+    <fullyQualifiedTypeName name="java.util.Collections"/>
+    <fullyQualifiedTypeName name="com.tca.graph.GraphUtil"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="com.tca.util.DoublyLinkedList"/>
+    <fullyQualifiedTypeName name="java.util.NoSuchElementException"/>
+    <fullyQualifiedTypeName name="com.tca.util.CircularSinglyLinkedList"/>
+    <fullyQualifiedTypeName name="java.lang.IndexOutOfBoundsException"/>
+</qualifiedTypeNameHistroy>
