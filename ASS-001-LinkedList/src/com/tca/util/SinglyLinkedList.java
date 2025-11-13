@@ -1,24 +1,25 @@
 package com.tca.util;
 
+import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.StringJoiner;
 
-public class SinglyLinkedList 
+public class SinglyLinkedList<T> implements Iterable<T>
 {
-	private static class Node
+	private static class Node<T>
 	{
-		public int data;
-		public Node next;
+		public T data;
+		public Node<T> next;
 		
-		public Node(int data)
+		public Node(T data)
 		{
 			this.data = data;
 			this.next = null;
 		}
 	}
 	
-	private Node first;
-	private Node last;
+	private Node<T> first;
+	private Node<T> last;
 	private int count;
 	
 	public SinglyLinkedList()
@@ -28,13 +29,13 @@ public class SinglyLinkedList
 		count = 0;
 	}
 	
-	public void add(int element)
+	public void add(T element)
 	{
 		
 		// When List is empty
 		if(first == null)
 		{
-			Node t = new Node(element);
+			Node<T> t = new Node<T>(element);
 			first = t;
 			last = t;
 			count++;
@@ -42,7 +43,7 @@ public class SinglyLinkedList
 		else
 		{
 			// Add Element at last of list(Basic functionlity)
-			Node t = new Node(element);
+			Node<T> t = new Node<T>(element);
 			last.next = t;
 			last = last.next;
 			count++;
@@ -51,7 +52,7 @@ public class SinglyLinkedList
 	
 	public void display()
 	{
-		for(Node T = first; T != null; T = T.next)
+		for(Node<T> T = first; T != null; T = T.next)
 		{
 			System.out.print(T.data+"->");
 		}
@@ -69,7 +70,7 @@ public class SinglyLinkedList
 		
 		StringJoiner sj = new StringJoiner(",","[","]"); // separator, prefix,suffix
 		
-		for(Node T = first; T != null; T = T.next)
+		for(Node<T> T = first; T != null; T = T.next)
 		{
 			sj.add(String.valueOf(T.data));
 		}
@@ -78,30 +79,30 @@ public class SinglyLinkedList
 	}
 	
 	
-	public void addFirst(int element)
+	public void addFirst(T element)
 	{
 		if(first == null)
 		{
-			Node T = new Node(element);
+			Node<T> T = new Node<T>(element);
 			first = T;
 			last = T;
 			count++;
 		}
 		else
 		{
-			Node T = new Node(element);
+			Node<T> T = new Node<T>(element);
 			T.next = first;
 			first = T;
 			count++;
 		}
 	}
 	
-	public void addLast(int element)
+	public void addLast(T element)
 	{
 		add(element);
 	}
 	
-	private Node getNodeAt(int index)
+	private Node<T> getNodeAt(int index)
 	{
 		// Utility method because declared as private
 		// Used to get Node at particular index
@@ -110,7 +111,7 @@ public class SinglyLinkedList
 			throw new IndexOutOfBoundsException("Invalid Index '"+index+"'");
 		}
 		
-		Node T = first;
+		Node<T> T = first;
 		for(int i=0; i<count; i++)
 		{
 			if(i == index)
@@ -124,20 +125,20 @@ public class SinglyLinkedList
 		return null;
 	}
 	
-	public int getElementAt(int index)
+	public T getElementAt(int index)
 	{
 		// Gets element of particular index
-		Node T = getNodeAt(index);
-		return T.data;
+		Node<T> T = getNodeAt(index);
+		return  (T) T.data;
 	}
 	
 	
-	public int setElementAt(int index, int element)
+	public T setElementAt(int index, T element)
 	{
 		// Same as set() of List class, sets as element and returns old data
 		
-		Node T = getNodeAt(index);
-		int item = T.data;
+		Node<T> T = getNodeAt(index);
+		T item = (T) T.data;
 		
 		T.data = element;
 		
@@ -146,7 +147,7 @@ public class SinglyLinkedList
 	}
 	
 	
-	public void add(int index, int element)
+	public void add(int index, T element)
 	{
 		if(index <0 || index>= count)
 		{
@@ -165,10 +166,10 @@ public class SinglyLinkedList
 		}
 		else
 		{
-			Node T = new Node(element);
+			Node<T> T = new Node<T>(element);
 			
 			// To get Node previous to position of inserting
-			Node S = getNodeAt(index-1);
+			Node<T> S = getNodeAt(index-1);
 			
 			// Adhi joda
 			T.next = S.next;
@@ -182,13 +183,13 @@ public class SinglyLinkedList
 	}
 	
 	
-	public int indexOf(int element)
+	public int indexOf(T element)
 	{
 		// To get first occurrence of an element
 		
 		int i = 0;
 		
-		for(Node T = first; T!= null; T = T.next,i++)
+		for(Node<T> T = first; T!= null; T = T.next,i++)
 		{
 			if(T.data == element)
 			{
@@ -199,14 +200,14 @@ public class SinglyLinkedList
 		return-1;
 	}
 	
-	public int lastIndexOf(int element)
+	public int lastIndexOf(T element)
 	{
 		//Returns last index of the specified element
 		
 		int i=0;
 		int rindex = -1;
 		
-		for(Node T = first; T!= null; T = T.next,i++)
+		for(Node<T> T = first; T!= null; T = T.next,i++)
 		{
 			if(T.data == element)
 			{
@@ -218,7 +219,7 @@ public class SinglyLinkedList
 	}
 	
 	
-	public int remove()
+	public T remove()
 	{
 		// Removes first node and returns the data if the list not empty 
 		// otherwise it gives NoSuchElementException("LinkedList is Empty");
@@ -231,14 +232,14 @@ public class SinglyLinkedList
 		// Only one node
 		if(first == last)
 		{
-			int item = first.data;
+			T item = (T) first.data;
 			first = null;
 			last = null;
 			count = 0;
 			return item;
 		}
 		
-		Node T = first;
+		Node<T> T = first;
 		first = first.next;
 		T.next = null;
 		
@@ -247,7 +248,7 @@ public class SinglyLinkedList
 			
 	}
 	
-	public int removeFirst()
+	public T removeFirst()
 	{
 		// Removes first node and returns its data if the list not empty 
 		// otherwise it gives NoSuchElementException("LinkedList is Empty");
@@ -255,7 +256,7 @@ public class SinglyLinkedList
 		return remove();
 	}
 	
-	public int removeLast()
+	public T removeLast()
 	{
 		// Removes last node and returns its data if the list not empty 
 		// otherwise it gives NoSuchElementException("LinkedList is Empty");
@@ -267,14 +268,14 @@ public class SinglyLinkedList
 		// Only one node
 		if(first == last)
 		{
-			int item = last.data;
+			T item = (T) last.data;
 			last = null;
 			first = null;
 			count =0;
 			return item;
 		}
 		
-		int item = last.data;
+		T item = (T) last.data;
 		last = getNodeAt(count -2); // Getting second last node and assigning to last , to remove last.
 		last.next = null;
 		
@@ -283,7 +284,7 @@ public class SinglyLinkedList
 		
 	}
 	
-	public int remove(int index)
+	public T remove(int index)
 	{
 		// Removes an element at a specified index if the index is valid(within list's size)
 		// Otherwise throws exceptions
@@ -308,8 +309,8 @@ public class SinglyLinkedList
 		}
 		else
 		{
-			Node T = getNodeAt(index);
-			Node S = getNodeAt(index-1);
+			Node<T> T = getNodeAt(index);
+			Node<T> S = getNodeAt(index-1);
 			
 			S.next = T.next;
 			T.next = null;
@@ -320,7 +321,7 @@ public class SinglyLinkedList
 	}
 	
 	
-	public boolean removeElement(int element)
+	public boolean removeElement(T element)
 	{
 		// It removes first occurrence of an element
 		// Returns true if element is removed otherwise false
@@ -335,12 +336,12 @@ public class SinglyLinkedList
 		return true;
 	}
 	
-	public boolean removeFirstOccurrence(int element)
+	public boolean removeFirstOccurrence(T element)
 	{
 		return removeElement(element);
 	}
 	
-	public boolean removeLastOccurrence(int element)
+	public boolean removeLastOccurrence(T element)
 	{
 		int index = lastIndexOf(element);
 		if(index == -1)
@@ -354,7 +355,7 @@ public class SinglyLinkedList
 	}
 	
 	
-	public boolean removeAllOccurrence(int element)
+	public boolean removeAllOccurrence(T element)
 	{
 		// It removes all the occurrences of an element
 		// 
@@ -370,7 +371,7 @@ public class SinglyLinkedList
 	}
 	
 	
-	public int indexOf(int occurrence, int element)
+	public int indexOf(int occurrence, T element)
 	{
 		// This methods gives the index of specified element at specified occurrence
 		// It basically searches element for Nth occurrence
@@ -389,7 +390,7 @@ public class SinglyLinkedList
 		int cnt = 0;
 		int i=0;
 		
-		for(Node T = first; T!=null; T = T.next)
+		for(Node<T> T = first; T!=null; T = T.next)
 		{
 			if(T.data == element)
 			{
@@ -409,7 +410,33 @@ public class SinglyLinkedList
 	
 	
 	
+	public Iterator<T> iterator()
+	{
+		return new MyIterator();
+	}
 	
+	
+	private class MyIterator implements Iterator<T>
+	{
+		int index = 0;
+		@Override
+		public boolean hasNext() 
+		{
+			return index < count;
+		}
+
+		@Override
+		public T next() 
+		{
+			if(!hasNext())
+			{
+				throw new NoSuchElementException("LinkedList is Empty");
+			}
+			
+			return getElementAt(index++);
+		}
+		
+	}
 	
 	
 	

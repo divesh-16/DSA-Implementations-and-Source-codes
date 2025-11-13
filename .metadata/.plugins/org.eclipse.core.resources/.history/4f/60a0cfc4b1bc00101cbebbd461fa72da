@@ -1,0 +1,41 @@
+package com.tca;
+
+import com.tca.util.DynamicArrayStack;
+
+public class App {
+
+	public static void main(String[] args) 
+	{
+		DynamicArrayStack stk = new DynamicArrayStack();
+		
+		stk.push(11);
+		stk.push(22);
+		stk.push(33);
+		stk.push(44);
+		stk.push(55);
+		stk.push(11);
+		stk.push(22);
+		stk.push(33);
+		stk.push(44);
+		stk.push(55);
+		stk.push(11);
+		stk.push(22);
+		stk.push(33);
+		stk.push(44);
+		stk.push(55);
+		
+		System.out.println(stk.size());
+		
+		System.out.println(stk);
+		
+		while(!stk.isEmpty())
+		{
+			System.out.println(stk.pop());
+		}
+		
+		System.out.println(stk.size());
+		System.out.println(stk.capacity());
+		
+	}
+
+}

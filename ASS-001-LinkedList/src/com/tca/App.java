@@ -1,47 +1,55 @@
 package com.tca;
 
-import com.tca.util.CircularSinglyLinkedList;
-import com.tca.util.DoublyLinkedList;
+import com.tca.util.SinglyLinkedList;
 
 public class App {
 
 	public static void main(String[] args) 
 	{
-//		SinglyLinkedList L = new SinglyLinkedList();
-//		L.add(11);
-//		L.add(22);
-//		L.add(33);
-//		L.add(44);
-//		L.add(55);
-//		L.add(77);
-//		L.add(88);
-//		L.add(55);
-//		
-//		L.display();
-//		System.out.println(L);
-//		System.out.println(L.size());
-//		
-//		L.addFirst(10);
-//		L.addLast(66);
-//		System.out.println(L);
-//		
-//		System.out.println(L.getElementAt(2));
-//
-//		
-//		System.out.println(L.indexOf(55));
-//		System.out.println(L.lastIndexOf(10));
-//		
-//		System.out.println(L.remove());
-//		System.out.println(L.remove(3));
-//		System.out.println(L.removeAllOccurrence(11));
-//		System.out.println(L.removeElement(44));
-//		System.out.println(L.removeFirst());
-//		System.out.println(L.removeLast());
-//		System.out.println(L.removeFirstOccurrence(55));
-//		System.out.println(L.removeLastOccurrence(55));
-//		
-//		
-//		System.out.println(L);
+		SinglyLinkedList<Integer> L = new SinglyLinkedList<>();
+		L.add(11);
+		L.add(22);
+		L.add(33);
+		L.add(44);
+		L.add(55);
+		L.add(77);
+		L.add(88);
+		L.add(55);
+		
+		System.out.println("Using For-each loop");
+		for(Integer i : L)
+		{
+			System.out.print(i+" ");
+		}
+		System.out.println();
+		
+		L.display();
+		System.out.println(L);
+		System.out.println(L.size());
+		
+		L.addFirst(10);
+		L.addLast(66);
+		System.out.println(L);
+		
+		System.out.println(L.getElementAt(2));
+
+		
+		System.out.println(L.indexOf(55));
+		System.out.println(L.lastIndexOf(10));
+		
+		System.out.println(L.remove());
+		System.out.println(L.remove(3));
+		System.out.println(L.removeAllOccurrence(11));
+		System.out.println(L.removeElement(44));
+		System.out.println(L.removeFirst());
+		System.out.println(L.removeLast());
+		System.out.println(L.removeFirstOccurrence(55));
+		System.out.println(L.removeLastOccurrence(55));
+		
+		
+		System.out.println(L);
+		
+		
 		
 //			
 //		DoublyLinkedList DLL = new DoublyLinkedList();
@@ -66,57 +74,57 @@ public class App {
 //		System.out.println(DLL.indexOf(44));
 		
 		
-		
-		
-		CircularSinglyLinkedList CLL = new CircularSinglyLinkedList();
-		
-		CLL.add(11);
-		CLL.add(22);
-		CLL.add(33);
-		
-		CLL.display();
-		
-		System.out.println(CLL.size());
-		System.out.println(CLL);
-		
-		CLL.addFirst(10);
-		System.out.println(CLL);
-		
-		CLL.addLast(77);
-		
-		System.out.println(CLL);
-		System.out.println(CLL.size());
 //		
-		System.out.println(CLL.getElement(2));
 //		
-		CLL.setElement(3, 55);
-		System.out.println(CLL);
+//		CircularSinglyLinkedList CLL = new CircularSinglyLinkedList();
 //		
-		CLL.add(0,9);
-		System.out.println(CLL);
-		CLL.add(CLL.size(),77);
-		System.out.println(CLL);
+//		CLL.add(11);
+//		CLL.add(22);
+//		CLL.add(33);
 //		
-		System.out.println(CLL.indexOf(77));
-		System.out.println(CLL.lastIndexOf(77));
+//		CLL.display();
 //		
-		System.out.println(CLL.remove());
-		System.out.println(CLL);
-		
-		System.out.println(CLL.removeLast());
-		System.out.println(CLL);
-		
-		System.out.println(CLL.remove(3));
-		System.out.println(CLL);
-		CLL.add(66);
-		CLL.addFirst(77);
-		CLL.add(88);
-		CLL.add(77);
-		
-		System.out.println(CLL);
-		
-		System.out.println(CLL.indexOf(3,77));
-		
+//		System.out.println(CLL.size());
+//		System.out.println(CLL);
+//		
+//		CLL.addFirst(10);
+//		System.out.println(CLL);
+//		
+//		CLL.addLast(77);
+//		
+//		System.out.println(CLL);
+//		System.out.println(CLL.size());
+////		
+//		System.out.println(CLL.getElement(2));
+////		
+//		CLL.setElement(3, 55);
+//		System.out.println(CLL);
+////		
+//		CLL.add(0,9);
+//		System.out.println(CLL);
+//		CLL.add(CLL.size(),77);
+//		System.out.println(CLL);
+////		
+//		System.out.println(CLL.indexOf(77));
+//		System.out.println(CLL.lastIndexOf(77));
+////		
+//		System.out.println(CLL.remove());
+//		System.out.println(CLL);
+//		
+//		System.out.println(CLL.removeLast());
+//		System.out.println(CLL);
+//		
+//		System.out.println(CLL.remove(3));
+//		System.out.println(CLL);
+//		CLL.add(66);
+//		CLL.addFirst(77);
+//		CLL.add(88);
+//		CLL.add(77);
+//		
+//		System.out.println(CLL);
+//		
+//		System.out.println(CLL.indexOf(3,77));
+//		
 		
 		
 		
