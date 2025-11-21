@@ -1,0 +1,168 @@
+package com.tca.util;
+
+import java.util.ArrayList;
+import java.util.EmptyStackException;
+import java.util.List;
+import java.util.StringJoiner;
+
+/*
+ * If the stack gets too high, it might over-balance. 
+ * Therefore, in real life we would likely start a new stack when the previous stack exceeds some threshold.
+ * Implement a data structure that mimics this and composed of several stacks.
+ * And should create a new stack once the previous one exceeds capacity.
+ * push() and pop() of this class should behave identically to a regular stack. 
+ */
+
+
+/*
+ * First we will create a class which will perform stack operations and capacity(threshold).
+ * If threshold is met/exceeds we create another object this class. (Stack)
+ * */
+
+class Stack
+{
+	private int top = -1;
+	private int stack[];
+	private int capacity;
+	
+	Stack(int capacity)
+	{
+		this.capacity = capacity;
+		stack = new int[capacity];
+	}
+	
+	public void push(int element)
+	{
+		stack[++top] = element;
+	}
+	
+	public int pop()
+	{
+		return stack[top--];
+	}
+	
+	public boolean isFull()
+	{
+		return top+1 == capacity;
+	}
+	
+	public int size()
+	{
+		return top+1;
+	}
+	
+	public String toString()
+	{
+		StringJoiner sj = new StringJoiner(",","[","]");
+		
+		for(int i=0;i<=top; i++)
+		{
+			sj.add(String.valueOf(stack[i]));
+		}
+		
+		return sj.toString();
+	}
+	
+}
+
+
+/*
+ * Now the second class "StackSets" will manage the above stack objects sequentially.
+ * It will create new stack if old is overflowen or has no stack.
+ * It will give proper message on stack underflow
+ * You can also access the nth stack
+ * */
+
+
+public class StackSets 
+{
+	private int threshold;
+	private List<Stack> list = null;
+	
+	StackSets(int t)
+	{
+		threshold = t;
+		list = new ArrayList<>();
+	}
+	
+	public Stack getLastStack()
+	{
+		if(list.size() < 0)
+		{
+			return null;
+		}
+		else
+		{
+			return list.get(list.size()-1);
+		}
+	}
+	
+	public Stack getNthStack(int n)
+	{
+		if(list.isEmpty() || n>= list.size())
+		{
+			return null;
+		}
+		else
+		{
+			return list.get(n-1);
+		}
+	}
+	
+	
+	public void push(int element)
+	{
+		Stack lastStack = getLastStack();
+		if(lastStack == null)	// no stack is present in list.
+		{
+			lastStack = new Stack(threshold);
+			lastStack.push(element);
+			list.add(lastStack);
+		}
+		else
+		{
+			if(!lastStack.isFull())	 // last stack is not full, so push element
+			{
+				lastStack.push(element);
+			}
+			else	// last stack is full, so create a new stack and  push element and push stack to list.
+			{
+				Stack newStack = new Stack(threshold);
+				newStack.push(element);
+				list.add(newStack);
+			}
+		}
+	}
+	
+	
+	public int pop()
+	{
+		Stack lastStack = getLastStack();
+		if(lastStack == null)
+		{
+			throw new EmptyStackException();
+		}
+		
+		int item = lastStack.pop();
+		if(lastStack.size() == 0)		// remove stack if there is no element.
+		{
+			list.remove(list.size()-1);
+		}
+		
+		return item;
+	}
+	
+	
+	public String toString()
+	{
+		StringJoiner sj = new StringJoiner(",","[","]");
+		
+		for(Stack stk : list)
+		{
+			sj.add(stk.toString());
+		}
+		
+		return sj.toString();
+	}
+	
+}

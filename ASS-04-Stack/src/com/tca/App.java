@@ -1,15 +1,39 @@
 package com.tca;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.Stack;
 
-import com.tca.util.DynamicLinkedListStack;
+import com.tca.util.StackSets;
 
 public class App {
 
 	public static void main(String[] args) 
 	{
+		StackSets stks = new StackSets(3);
+		stks.push(11);
+		stks.push(22);
+		stks.push(33);
+		stks.push(44);
+		stks.push(11);
+		stks.push(22);
+		stks.push(33);
+		stks.push(44);
+		
+		System.out.println(stks);
+		
+		System.out.println(stks.pop());
+		System.out.println(stks.pop());
+		System.out.println(stks.pop());
+		System.out.println(stks.pop());
+		System.out.println(stks.pop());
+		System.out.println(stks.pop());
+		System.out.println(stks.pop());
+		
+		
+		
+		System.out.println(stks);
+		
+		
+		
 		/*
 		DynamicLinkedListStack stk = new DynamicLinkedListStack();
 		
@@ -47,9 +71,9 @@ public class App {
 		
 		//System.out.println(Character.digit('9',32));
 		
-		String s = "1-(     -2)";
-		
-		System.out.println(infixEvalution(s));
+//		String s = "1-(     -2)";
+//		
+//		System.out.println(infixEvalution(s));
 		
 	}
 	

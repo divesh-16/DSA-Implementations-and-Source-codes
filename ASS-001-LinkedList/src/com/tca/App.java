@@ -6,49 +6,100 @@ public class App {
 
 	public static void main(String[] args) 
 	{
-		SinglyLinkedList<Integer> L = new SinglyLinkedList<>();
-		L.add(11);
-		L.add(22);
-		L.add(33);
-		L.add(44);
-		L.add(55);
-		L.add(77);
-		L.add(88);
-		L.add(55);
 		
-		System.out.println("Using For-each loop");
-		for(Integer i : L)
-		{
-			System.out.print(i+" ");
-		}
-		System.out.println();
-		
-		L.display();
-		System.out.println(L);
-		System.out.println(L.size());
-		
-		L.addFirst(10);
-		L.addLast(66);
-		System.out.println(L);
-		
-		System.out.println(L.getElementAt(2));
-
-		
-		System.out.println(L.indexOf(55));
-		System.out.println(L.lastIndexOf(10));
-		
-		System.out.println(L.remove());
-		System.out.println(L.remove(3));
-		System.out.println(L.removeAllOccurrence(11));
-		System.out.println(L.removeElement(44));
-		System.out.println(L.removeFirst());
-		System.out.println(L.removeLast());
-		System.out.println(L.removeFirstOccurrence(55));
-		System.out.println(L.removeLastOccurrence(55));
+		SinglyLinkedList<Integer> L1 = new SinglyLinkedList<>();
+		L1.add(null);
+		L1.add(22);
+		L1.add(33);
 		
 		
-		System.out.println(L);
+		SinglyLinkedList<Integer> L2 = new SinglyLinkedList<>();
+		L2.add(null);
+		L2.add(22);
+		L2.add(33);
 		
+		System.out.println(L1);
+		System.out.println(L2);
+		
+		
+		System.out.println(L2.equals(L1));
+		
+		System.out.println(L1.hashCode());
+		System.out.println(L2.hashCode());
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+//		ArrayList<Integer> L1 = new ArrayList<>();
+//		LinkedList<Integer> L2 = new LinkedList<>();
+//		
+//		System.out.println(L1.equals(L2));
+//		System.out.println(L1.hashCode());
+//		System.out.println(L2.hashCode());
+		
+		
+//		SinglyLinkedList<Integer> L = new SinglyLinkedList<>();
+//		L.add(11);
+//		L.add(22);
+//		L.add(33);
+//		L.add(44);
+//		L.add(55);
+//		L.add(77);
+//		L.add(88);
+//		L.add(55);
+//		
+//		System.out.println("Using For-each loop");
+//		for(Integer i : L)
+//		{
+//			System.out.print(i+" ");
+//		}
+//		System.out.println();
+//		
+//		L.display();
+//		System.out.println(L);
+//		System.out.println(L.size());
+//		
+//		L.addFirst(10);
+//		L.addLast(66);
+//		System.out.println(L);
+//		
+//		System.out.println(L.getElementAt(2));
+//
+//		
+//		System.out.println(L.indexOf(55));
+//		System.out.println(L.lastIndexOf(10));
+//		
+//		System.out.println(L.remove());
+//		System.out.println(L.remove(3));
+//		System.out.println(L.removeAllOccurrence(11));
+//		System.out.println(L.removeElement(44));
+//		System.out.println(L.removeFirst());
+//		System.out.println(L.removeLast());
+//		System.out.println(L.removeFirstOccurrence(55));
+//		System.out.println(L.removeLastOccurrence(55));
+//		
+//		
+//		System.out.println(L);
+//		
 		
 		
 //			

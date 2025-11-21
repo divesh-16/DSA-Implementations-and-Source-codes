@@ -1,0 +1,507 @@
+package com.tca.util;
+
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+import java.util.Objects;
+import java.util.StringJoiner;
+
+public class SinglyLinkedList<T> implements Iterable<T>
+{
+	private static class Node<T>
+	{
+		public T data;
+		public Node<T> next;
+		
+		public Node(T data)
+		{
+			this.data = data;
+			this.next = null;
+		}
+	}
+	
+	private Node<T> first;
+	private Node<T> last;
+	private int count;
+	
+	public SinglyLinkedList()
+	{
+		first = null;
+		last = null;
+		count = 0;
+	}
+	
+	public void add(T element)
+	{
+		
+		// When List is empty
+		if(first == null)
+		{
+			Node<T> t = new Node<T>(element);
+			first = t;
+			last = t;
+			count++;
+		}
+		else
+		{
+			// Add Element at last of list(Basic functionlity)
+			Node<T> t = new Node<T>(element);
+			last.next = t;
+			last = last.next;
+			count++;
+		}
+	}
+	
+	public void display()
+	{
+		for(Node<T> T = first; T != null; T = T.next)
+		{
+			System.out.print(T.data+"->");
+		}
+		System.out.println("null");
+	}
+	
+	public int size()
+	{
+		// Returns count of Nodes in List
+		return count;
+	}
+	
+	public String toString()
+	{
+		
+		StringJoiner sj = new StringJoiner(",","[","]"); // separator, prefix,suffix
+		
+		for(Node<T> T = first; T != null; T = T.next)
+		{
+			sj.add(String.valueOf(T.data));
+		}
+		
+		return sj.toString();
+	}
+	
+	
+	public void addFirst(T element)
+	{
+		if(first == null)
+		{
+			Node<T> T = new Node<T>(element);
+			first = T;
+			last = T;
+			count++;
+		}
+		else
+		{
+			Node<T> T = new Node<T>(element);
+			T.next = first;
+			first = T;
+			count++;
+		}
+	}
+	
+	public void addLast(T element)
+	{
+		add(element);
+	}
+	
+	private Node<T> getNodeAt(int index)
+	{
+		// Utility method because declared as private
+		// Used to get Node at particular index
+		if(index <0 || index >=count)
+		{
+			throw new IndexOutOfBoundsException("Invalid Index '"+index+"'");
+		}
+		
+		Node<T> T = first;
+		for(int i=0; i<count; i++)
+		{
+			if(i == index)
+			{
+				return T;
+			}
+			
+			T = T.next;
+		}
+		
+		return null;
+	}
+	
+	public T getElementAt(int index)
+	{
+		// Gets element of particular index
+		Node<T> T = getNodeAt(index);
+		return  (T) T.data;
+	}
+	
+	
+	public T setElementAt(int index, T element)
+	{
+		// Same as set() of List class, sets as element and returns old data
+		
+		Node<T> T = getNodeAt(index);
+		T item = (T) T.data;
+		
+		T.data = element;
+		
+		return item;
+		
+	}
+	
+	
+	public void add(int index, T element)
+	{
+		if(index <0 || index>= count)
+		{
+			throw new IndexOutOfBoundsException("Invalid Index '"+index+"'");
+		}
+		
+		if(index ==0 ) 
+		{
+			// To add at first, when index given as zero
+			addFirst(element);
+		}
+		else if(index == count)
+		{
+			// To add at last, when index given as equal to count
+			addLast(element);
+		}
+		else
+		{
+			Node<T> T = new Node<T>(element);
+			
+			// To get Node previous to position of inserting
+			Node<T> S = getNodeAt(index-1);
+			
+			// Adhi joda
+			T.next = S.next;
+			
+			// mg toda
+			S.next = T;
+			
+			count++;
+			
+		}
+	}
+	
+	
+	public int indexOf(T element)
+	{
+		// To get first occurrence of an element
+		
+		int i = 0;
+		
+		for(Node<T> T = first; T!= null; T = T.next,i++)
+		{
+			if(T.data == element)
+			{
+				return i;
+			}
+	
+		}
+		return-1;
+	}
+	
+	public int lastIndexOf(T element)
+	{
+		//Returns last index of the specified element
+		
+		int i=0;
+		int rindex = -1;
+		
+		for(Node<T> T = first; T!= null; T = T.next,i++)
+		{
+			if(T.data == element)
+			{
+				rindex = i;
+			}
+		}
+		
+		return rindex;
+	}
+	
+	
+	public T remove()
+	{
+		// Removes first node and returns the data if the list not empty 
+		// otherwise it gives NoSuchElementException("LinkedList is Empty");
+		
+		if(first == null)
+		{
+			throw new NoSuchElementException("LinkedList is Empty");
+		}
+		
+		// Only one node
+		if(first == last)
+		{
+			T item = (T) first.data;
+			first = null;
+			last = null;
+			count = 0;
+			return item;
+		}
+		
+		Node<T> T = first;
+		first = first.next;
+		T.next = null;
+		
+		count--;
+		return T.data;
+			
+	}
+	
+	public T removeFirst()
+	{
+		// Removes first node and returns its data if the list not empty 
+		// otherwise it gives NoSuchElementException("LinkedList is Empty");
+		
+		return remove();
+	}
+	
+	public T removeLast()
+	{
+		// Removes last node and returns its data if the list not empty 
+		// otherwise it gives NoSuchElementException("LinkedList is Empty");
+		if(first == null)
+		{
+			throw new NoSuchElementException("LinkedList is Empty");
+		}
+		
+		// Only one node
+		if(first == last)
+		{
+			T item = (T) last.data;
+			last = null;
+			first = null;
+			count =0;
+			return item;
+		}
+		
+		T item = (T) last.data;
+		last = getNodeAt(count -2); // Getting second last node and assigning to last , to remove last.
+		last.next = null;
+		
+		count--;
+		return item;
+		
+	}
+	
+	public T remove(int index)
+	{
+		// Removes an element at a specified index if the index is valid(within list's size)
+		// Otherwise throws exceptions
+		
+		if(index<0 || index>= count)
+		{
+			throw new IndexOutOfBoundsException("Index :"+index+", Size : "+count);
+		}
+		
+		if(first == null)
+		{
+			throw new NoSuchElementException("LinkedList is Empty");
+		}
+		
+		if(index == 0)
+		{
+			return remove();
+		}
+		else if(index == count-1)
+		{
+			return removeLast();
+		}
+		else
+		{
+			Node<T> T = getNodeAt(index);
+			Node<T> S = getNodeAt(index-1);
+			
+			S.next = T.next;
+			T.next = null;
+			count--;
+			
+			return T.data;
+		}
+	}
+	
+	
+	public boolean removeElement(T element)
+	{
+		// It removes first occurrence of an element
+		// Returns true if element is removed otherwise false
+		
+		int index = indexOf(element);
+		if(index == -1)
+		{
+			return false;
+		}
+		
+		remove(index);
+		return true;
+	}
+	
+	public boolean removeFirstOccurrence(T element)
+	{
+		return removeElement(element);
+	}
+	
+	public boolean removeLastOccurrence(T element)
+	{
+		int index = lastIndexOf(element);
+		if(index == -1)
+		{
+			return false;
+		}
+		
+		remove(index);
+		return true;
+				
+	}
+	
+	
+	public boolean removeAllOccurrence(T element)
+	{
+		// It removes all the occurrences of an element
+		// 
+		
+		boolean status = false;
+		// removing till all are removed
+		while(removeElement(element))
+		{
+			status = true;
+		}
+		
+		return status;
+	}
+	
+	
+	public int indexOf(int occurrence, T element)
+	{
+		// This methods gives the index of specified element at specified occurrence
+		// It basically searches element for Nth occurrence
+		// If founde it returns element otherwise -1
+		
+		if(first == null)
+		{
+			throw new NoSuchElementException("LinkedList is Empty");
+		}
+		
+		if(occurrence < 1)
+		{
+			throw new NoSuchElementException("Occurrence should be greater than 0");
+		}
+		
+		int cnt = 0;
+		int i=0;
+		
+		for(Node<T> T = first; T!=null; T = T.next)
+		{
+			if(T.data == element)
+			{
+				cnt++;
+				
+				if(cnt == occurrence)
+				{
+					return i;
+				}
+			}
+			
+			i++;
+		}
+		
+		return -1;
+	}
+	
+	
+	
+	public Iterator<T> iterator()
+	{
+		return new MyIterator();
+	}
+	
+	
+	private class MyIterator implements Iterator<T>
+	{
+		int index = 0;
+		@Override
+		public boolean hasNext() 
+		{
+			return index < count;
+		}
+
+		@Override
+		public T next() 
+		{
+			if(!hasNext())
+			{
+				throw new NoSuchElementException("LinkedList is Empty");
+			}
+			
+			return getElementAt(index++);
+		}
+		
+	}
+	
+	@Override
+	public boolean equals(Object L)
+	{
+		if(this == L)
+		{
+			return true;
+		}
+		else if(! (L instanceof SinglyLinkedList )) 
+		{
+			return false;
+		}
+		else
+		{
+			SinglyLinkedList<T> ob = (SinglyLinkedList<T>) L;
+			
+			Iterator<T> it1 = this.iterator();
+			Iterator<T> it2 = ob.iterator();
+			
+			while(it1.hasNext() && it2.hasNext())
+			{
+				if((it1.next() == null && it2.next() == null))
+				{
+					continue;
+				}
+				else if((it1.next() != null && it2.next() == null) || (it1.next() == null && it2.next() != null))
+				{
+					return false;
+				}
+				else if(!it1.next().equals(it2.next()))
+				{
+					return false;
+				}
+			}
+			
+			if((it1.hasNext() && !it2.hasNext()) || (!it1.hasNext() && it2.hasNext()))	// If One list larger than other
+			{
+				return false;
+			}
+		}
+		
+		return true;
+	}
+	
+	/*
+	 * ✅ Hash code must depend on the contents of the linked list
+	 * If two linked lists are considered equal (same sequence of elements), then their hash codes must also be equal.
+*/
+	public int hashcode()
+	{
+		int hash = 1;
+		Iterator<T> it = this.iterator();
+		
+		while(it.hasNext())
+		{
+			hash = 31 * hash + it.next().hashCode();
+		}
+		
+		return hash;
+			
+	}
+	
+	
+	
+	
+	
+}

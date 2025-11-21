@@ -2,6 +2,7 @@ package com.tca.util;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.Objects;
 import java.util.StringJoiner;
 
 public class SinglyLinkedList<T> implements Iterable<T>
@@ -437,6 +438,103 @@ public class SinglyLinkedList<T> implements Iterable<T>
 		}
 		
 	}
+	
+	@Override
+	public boolean equals(Object L)
+	{
+		if(this == L)	// Both object have same reference
+		{
+			return true;
+		}
+		else if(! (L instanceof SinglyLinkedList )) 	// L is not an object of this class.
+		{
+			return false;
+		}
+		else
+		{
+			SinglyLinkedList<T> ob = (SinglyLinkedList<T>) L;	// Type-cast object to this class.
+			
+			Iterator<T> it1 = this.iterator();	// get iterator for this object
+			Iterator<T> it2 = ob.iterator();	// get iterator for object L
+			
+			
+			
+			while(it1.hasNext() && it2.hasNext())	// until both list have elements.
+			{
+				/*
+				 * Returns true if the arguments are equal to each otherand false otherwise.
+				 * Consequently, if both arguments are null, trueis returned. 
+				 * Otherwise, if the first argument is not null,
+				 * equality is determined by calling the equals method of the first argument with the second argument of this method. 
+				 * Otherwise, false isreturned.*/
+				if(! Objects.equals(it1.next(), it2.next()))	
+				{
+					return false;
+				}
+				
+//				if(it1.next() == null && it2.next() == null)
+//				{
+//					continue;
+//				}
+//				else if((it1.next() != null && it2.next() == null) || (it1.next() == null && it2.next() != null))
+//				{
+//					System.out.println("null not null");
+//					return false;
+//				}
+//				else if(!it1.next().equals(it2.next()))
+//				{
+//					System.out.println("data not equal");
+//					return false;
+//				}
+			}
+			
+			
+			/*
+			 * If any list is larger than other, then it will still have element to iterate.
+			 * And if one has elements to iterate and other doesn't then it means they are not equal.
+			 * */
+			if((it1.hasNext() && !it2.hasNext()) || (!it1.hasNext() && it2.hasNext()))	// If One list larger than other
+			{
+				//System.out.println("one larger");
+				return false;
+			}
+		}
+		
+		return true;
+	}
+	
+	/*
+	 * ✅ Hash code must depend on the contents of the linked list
+	 * If two linked lists are considered equal (same sequence of elements), then their hash codes must also be equal.
+	 */
+	@Override
+	public int hashCode()
+	{
+		int hash = 1;
+		Iterator<T> it = this.iterator();
+		
+		while(it.hasNext())
+		{
+			T next = it.next();
+			if(next ==null)
+			{
+				hash = 31 * hash + 0;
+			}
+			else
+			{
+				hash = 31 * hash + next.hashCode();
+				// hashCode : Returns a hash code value for the object. 
+				// If one class does not has it's own hashCode() then Object class's hashCode() is still present in that class.
+			}
+			
+		}
+		
+		return hash;
+			
+	}
+	
+	/*
+	 * Document equals and hashCode method.*/
 	
 	
 	
