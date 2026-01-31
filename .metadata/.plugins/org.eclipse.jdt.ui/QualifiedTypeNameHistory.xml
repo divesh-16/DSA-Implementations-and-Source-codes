@@ -4,13 +4,11 @@
     <fullyQualifiedTypeName name="com.tca.bst.TreeNode"/>
     <fullyQualifiedTypeName name="com.tca.bst.BST"/>
     <fullyQualifiedTypeName name="java.lang.ArrayStoreException"/>
-    <fullyQualifiedTypeName name="java.util.Collections"/>
     <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="com.tca.util.DoublyLinkedList"/>
     <fullyQualifiedTypeName name="com.tca.util.CircularSinglyLinkedList"/>
     <fullyQualifiedTypeName name="java.lang.IndexOutOfBoundsException"/>
     <fullyQualifiedTypeName name="com.tca.util.StaticStack"/>
-    <fullyQualifiedTypeName name="java.lang.IllegalArgumentException"/>
     <fullyQualifiedTypeName name="java.lang.StackOverflowError"/>
     <fullyQualifiedTypeName name="com.tca.util.DynamicArrayStack"/>
     <fullyQualifiedTypeName name="com.tca.util.DynamicLinkedListStack"/>
@@ -24,7 +22,14 @@
     <fullyQualifiedTypeName name="com.tca.util.StaticQueue"/>
     <fullyQualifiedTypeName name="java.lang.IllegalStateException"/>
     <fullyQualifiedTypeName name="com.tca.util.CircularStaticQueue"/>
-    <fullyQualifiedTypeName name="java.util.NoSuchElementException"/>
     <fullyQualifiedTypeName name="com.tca.util.CircularDynamicArrayQueue"/>
+    <fullyQualifiedTypeName name="com.tca.util.DynamicQueue"/>
+    <fullyQualifiedTypeName name="java.lang.Comparable"/>
+    <fullyQualifiedTypeName name="java.util.Collections"/>
+    <fullyQualifiedTypeName name="com.tca.comparators.NameComparator"/>
+    <fullyQualifiedTypeName name="com.tca.comparators.RnoComparator"/>
+    <fullyQualifiedTypeName name="java.lang.IllegalArgumentException"/>
+    <fullyQualifiedTypeName name="java.lang.NullPointerException"/>
+    <fullyQualifiedTypeName name="java.util.NoSuchElementException"/>
     <fullyQualifiedTypeName name="java.util.Arrays"/>
 </qualifiedTypeNameHistroy>

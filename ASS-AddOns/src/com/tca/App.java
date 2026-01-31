@@ -1,8 +1,13 @@
 package com.tca;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
+
+import com.tca.comparators.NameComparator;
+import com.tca.comparators.RnoComparator;
+import com.tca.entities.Student;
 
 public class App 
 {
@@ -69,16 +74,35 @@ public class App
 
 	public static void main(String[] args) 
 	{
-		int a[] = {1,2,1};
+//		int a[] = {1,2,1};
+//		
+//		LinkedList<Integer> ds = new LinkedList<>();
+//		int n=3;
+//		//subsequence(0, a, n, ds);
+//		int k = 2;
+//		
+//		sumOfSubWithK(0, ds, a, 0, k, n);
+//		combination(0, ds, a, 2, n);
+//		System.out.println(parent);
 		
-		LinkedList<Integer> ds = new LinkedList<>();
-		int n=3;
-		//subsequence(0, a, n, ds);
-		int k = 2;
 		
-		sumOfSubWithK(0, ds, a, 0, k, n);
-		combination(0, ds, a, 2, n);
-		System.out.println(parent);
+		Student s1 = new Student(101,"AAA",60.0);
+		Student s2 = new Student(103,"BBB",70.0);
+		Student s3 = new Student(102,"CCC",50.0);
+		
+		List<Student> L = new ArrayList<>();
+		L.add(s1);
+		L.add(s2);
+		L.add(s3);
+		
+		
+		System.out.println(L);
+		System.out.println("-------------------------------------------------------------------");
+		Collections.sort(L,new NameComparator());
+		System.out.println(L);
+		System.out.println("-------------------------------------------------------------------");
+		Collections.sort(L,new RnoComparator());
+		System.out.println(L);
 	}
 
 }
