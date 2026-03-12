@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.tca.graph.AdjacencyMatrix;
 import com.tca.graph.GraphUtil;
 
 public class App {
@@ -12,9 +13,9 @@ public class App {
 	public static void main(String[] args) 
 	{
 		
-		GraphUtil ob = new GraphUtil();
-		System.out.println(ob.hashCode());
-		
+//		GraphUtil ob = new GraphUtil();
+//		System.out.println(ob.hashCode());
+//		
 //		Map<Integer,List<Integer>> map = new HashMap<>();
 //	        
 //		int edges[][] = {{0,1},{0,2},{3,5},{5,4},{4,3}};
@@ -33,6 +34,20 @@ public class App {
 //        }
 //        
 //        System.out.println(map);
+		
+		AdjacencyMatrix g = new AdjacencyMatrix(6);
+		int edges[][] = {{0,1},{0,2},{2,3},{3,5},{5,4},{1,4}};
+		
+		for(int edge[] : edges)
+		{
+			g.addEdge(edge[0], edge[1]);
+		}
+		
+		System.out.println( g.DFS(0));
+		System.out.println( g.BFS(0));
+		
+		
+		
 	}
 
 }

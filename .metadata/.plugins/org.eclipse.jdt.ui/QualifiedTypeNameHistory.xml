@@ -28,8 +28,10 @@
     <fullyQualifiedTypeName name="java.util.Collections"/>
     <fullyQualifiedTypeName name="com.tca.comparators.NameComparator"/>
     <fullyQualifiedTypeName name="com.tca.comparators.RnoComparator"/>
-    <fullyQualifiedTypeName name="java.lang.IllegalArgumentException"/>
     <fullyQualifiedTypeName name="java.lang.NullPointerException"/>
-    <fullyQualifiedTypeName name="java.util.NoSuchElementException"/>
     <fullyQualifiedTypeName name="java.util.Arrays"/>
+    <fullyQualifiedTypeName name="java.lang.IllegalArgumentException"/>
+    <fullyQualifiedTypeName name="com.tca.graph.AdjacencyMatrix"/>
+    <fullyQualifiedTypeName name="java.util.NoSuchElementException"/>
+    <fullyQualifiedTypeName name="com.tca.graph.AdjacencyList"/>
 </qualifiedTypeNameHistroy>
